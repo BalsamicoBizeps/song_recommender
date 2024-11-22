@@ -56,7 +56,7 @@ def load_scaler(filename="scaler_alt.pickle"):
 # --- Recommender Function ---
 def song_playlist_recommender(user_af, user_song, hot_tracks, database):
     if user_song.lower() in [song.lower() for song in list(hot_tracks["song"])]:
-        rec_track = random.choice(list(hot_tracks[hot_tracks["song"] != user_song]["id"]), 15)
+        rec_track = random.sample(list(hot_tracks[hot_tracks["song"] != user_song]["id"]), 15)
         rec_playlist = [rec_track]
     else:
         model = load_model(filename="kmeans_26.pickle")
